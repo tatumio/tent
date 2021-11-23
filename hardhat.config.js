@@ -6,6 +6,8 @@
 // - COMPILE_VERSION:   compiler version (default: 0.8.3)
 // - COINMARKETCAP:     coinmarkercat api key for USD value in gas report
 
+require('@openzeppelin/hardhat-upgrades');
+
 const fs = require('fs');
 const path = require('path');
 const argv = require('yargs/yargs')()
@@ -33,7 +35,7 @@ const argv = require('yargs/yargs')()
     compiler: {
       alias: 'compileVersion',
       type: 'string',
-      default: '0.8.3',
+      default: '0.8.9',
     },
     coinmarketcap: {
       alias: 'coinmarketcapApiKey',
@@ -52,8 +54,6 @@ for (const f of fs.readdirSync(path.join(__dirname, 'hardhat'))) {
   require(path.join(__dirname, 'hardhat', f));
 }
 
-const withOptimizations = argv.enableGasReport || argv.compileMode === 'production';
-
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
@@ -62,15 +62,15 @@ module.exports = {
     version: argv.compiler,
     settings: {
       optimizer: {
-        enabled: withOptimizations,
+        enabled: true,
         runs: 200,
       },
     },
   },
   networks: {
-    hardhat: {
-      blockGasLimit: 10000000,
-      allowUnlimitedContractSize: !withOptimizations,
+    mumbai: {
+      url: 'https://rpc-mumbai.maticvigil.com/',
+      accounts: ['0x37b091fc4ce46a56da643f021254612551dbe0944679a6e09cb5724d3085c9ab'],
     },
   },
   gasReporter: {
