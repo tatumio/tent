@@ -13,8 +13,6 @@ contract EurTent is BlacklistableWhitelistable {
         grantRole(MINTER_ROLE, 0x12F87F7793fACd5A7C07204db194CF2F4891C799);
         grantRole(PAUSER_ROLE, 0x12F87F7793fACd5A7C07204db194CF2F4891C799);
         renounceRole(DEFAULT_ADMIN_ROLE, _msgSender());
-        renounceRole(MINTER_ROLE, _msgSender());
-        renounceRole(PAUSER_ROLE, _msgSender());
     }
 
     function decimals() public view virtual override returns (uint8) {

@@ -5,6 +5,8 @@
 logs
 *.log
 
+.openzeppelin/*
+
 # Runtime data
 pids
 *.pid
