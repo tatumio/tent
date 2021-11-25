@@ -14,7 +14,7 @@ contract Goldax is BlacklistableWhitelistable {
     }
 
     function decimals() public view virtual override returns (uint8) {
-        return 8;
+        return 0;
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override {

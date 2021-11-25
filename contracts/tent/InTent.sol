@@ -6,7 +6,7 @@ import "@openzeppelin/contracts-upgradeable/token/ERC20/presets/ERC20PresetMinte
 import "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20CappedUpgradeable.sol";
 import "./BlacklistableWhitelistable.sol";
 
-contract Tent is ERC20CappedUpgradeable, BlacklistableWhitelistable {
+contract InTent is ERC20CappedUpgradeable, BlacklistableWhitelistable {
 
     function decimals() public view virtual override returns (uint8) {
         return 8;
@@ -14,7 +14,7 @@ contract Tent is ERC20CappedUpgradeable, BlacklistableWhitelistable {
     
     function initialize(string memory name, string memory symbol) public virtual initializer override {
         BlacklistableWhitelistable.initialize(name, symbol);
-        ERC20CappedUpgradeable.__ERC20Capped_init(20000000000 * (10 ** uint256(decimals())));
+        ERC20CappedUpgradeable.__ERC20Capped_init(2000000000 * (10 ** uint256(decimals())));
         grantRole(DEFAULT_ADMIN_ROLE, 0x12F87F7793fACd5A7C07204db194CF2F4891C799);
         grantRole(MINTER_ROLE, 0x12F87F7793fACd5A7C07204db194CF2F4891C799);
         grantRole(PAUSER_ROLE, 0x12F87F7793fACd5A7C07204db194CF2F4891C799);
