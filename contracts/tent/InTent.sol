@@ -15,13 +15,13 @@ contract InTent is ERC20CappedUpgradeable, BlacklistableWhitelistable {
     function initialize(string memory name, string memory symbol) public virtual initializer override {
         BlacklistableWhitelistable.initialize(name, symbol);
         ERC20CappedUpgradeable.__ERC20Capped_init(2000000000 * (10 ** uint256(decimals())));
-        grantRole(DEFAULT_ADMIN_ROLE, 0x12F87F7793fACd5A7C07204db194CF2F4891C799);
-        grantRole(MINTER_ROLE, 0x12F87F7793fACd5A7C07204db194CF2F4891C799);
-        grantRole(PAUSER_ROLE, 0x12F87F7793fACd5A7C07204db194CF2F4891C799);
+        grantRole(DEFAULT_ADMIN_ROLE, 0xf137CA6668e559bBEC308CBd63DCDd9b77214799);
+        grantRole(MINTER_ROLE, 0xf137CA6668e559bBEC308CBd63DCDd9b77214799);
+        grantRole(PAUSER_ROLE, 0xf137CA6668e559bBEC308CBd63DCDd9b77214799);
         renounceRole(DEFAULT_ADMIN_ROLE, _msgSender());
-        mint(0x12F87F7793fACd5A7C07204db194CF2F4891C799, 1200000000 * (10 ** uint256(decimals())));
-        mint(0x0E84C8ac5a00e3300Ff51cC9cEcAa5f9eF5587d9, 500000000 * (10 ** uint256(decimals())));
-        mint(0x96564eBb48EEF8C2EaF2888716b9230D8f9ebeb3, 300000000 * (10 ** uint256(decimals())));
+        mint(0x12F022370110956Ec7C83bc17B388D222bD2813C, 1200000000 * (10 ** uint256(decimals())));
+        mint(0xC447A66eCC4E5eC202561c6a807BDb28f137319A, 600000000 * (10 ** uint256(decimals())));
+        mint(0x38bc075E4EBa3Fc64C62217751A88f274Fa341bB, 200000000 * (10 ** uint256(decimals())));
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override(ERC20Upgradeable, ERC20PresetMinterPauserUpgradeable) {
